@@ -28,6 +28,7 @@ class InvoiceController extends Controller
     public function create()
     {
         //
+        return view("invoices.create");
     }
 
     /**
@@ -39,6 +40,19 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         //
+        $invoice = new Invoice;
+        $invoice->number = $request->number;
+        $invoice->name = $request->name;
+        $invoice->address = $request->address;
+        $invoice->address2 = $request->address2;
+        $invoice->city = $request->city;
+        $invoice->zipcode = $request->zipcode;
+        $invoice->country = $request->country;
+        $invoice->total = $request->total;
+        $invoice->vat = $request->vat;
+        $invoice->save();
+
+        return "OK";
     }
 
     /**
